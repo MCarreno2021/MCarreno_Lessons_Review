@@ -16,7 +16,7 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Debug.Log("You got a veggie");
         }
     }
 }
