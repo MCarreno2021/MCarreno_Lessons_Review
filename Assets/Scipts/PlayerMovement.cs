@@ -33,6 +33,16 @@ public class PlayerMovement : NetworkBehaviour
         direction = new Vector3(hmove, 0, vmove);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, direction * 10);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(transform.position, rigbody.velocity * 5);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(transform.position, transform.localScale);
+    }
+
     void FixedUpdate()
     {
         if (!isLocalPlayer)
@@ -58,7 +68,9 @@ public class PlayerMovement : NetworkBehaviour
         {
             index++;
         }
+        
         rigbody.MovePosition(spawnPoints[index].transform.position);
+        rigbody.velocity = Vector3.zero;
     }
  
     
