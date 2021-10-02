@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
+[System.Obsolete]
 public class PlayerMovement : NetworkBehaviour
 {
     private Rigidbody rigbody;

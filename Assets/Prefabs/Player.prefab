@@ -130,7 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 9095144917874800874, guid: e6961d5eb0377984f9cd815e74f0e376, type: 3}
+  - {fileID: 8269630299684592662, guid: 4821b21070bad4547a524b65b6a1addc, type: 3}
 --- !u!114 &5234226327780671239
 MonoBehaviour:
   m_ObjectHideFlags: 0
