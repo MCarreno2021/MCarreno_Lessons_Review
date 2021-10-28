@@ -404,10 +404,10 @@ MonoBehaviour:
       m_Item7:
         transform: {fileID: 0}
         weight: 0
-    m_Offset: {x: 0, y: 0, z: -90}
+    m_Offset: {x: 0, y: 0, z: 0}
     m_MinLimit: 45
     m_MaxLimit: 135
-    m_AimAxis: 2
+    m_AimAxis: 0
     m_UpAxis: 2
     m_WorldUpType: 0
     m_WorldUpObject: {fileID: 0}
@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 160842462}
   - component: {fileID: 160842464}
   - component: {fileID: 160842465}
+  - component: {fileID: 160842466}
   m_Layer: 0
   m_Name: NavPlayer
   m_TagString: Player
@@ -499,6 +500,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5670153, y: 0.82482314, z: 1.0234032}
   m_Center: {x: 0.005851209, y: 0.32646668, z: 0.058511734}
+--- !u!135 &160842466
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160842461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &215172013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400014, guid: 0962bdca27eaca34aaa15f7fdf608faf, type: 3}
@@ -3651,8 +3665,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
-  m_Acceleration: 8
+  m_Speed: 30
+  m_Acceleration: 16.1
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

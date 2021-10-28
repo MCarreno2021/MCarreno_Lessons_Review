@@ -16,10 +16,12 @@ public class NavPlayerMovement : MonoBehaviour
     public static event DropHive DroppedHive;
 
     public Camera camera;
+    private Transform lookTarget;
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
         rgBody = GetComponent<Rigidbody>();
+        lookTarget = GameObject.Find("HeadAimTarget").transform;
     }
     void Update()
     {
@@ -56,7 +58,7 @@ public class NavPlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Dead");
             StartCoroutine(ZoomOut());
-        }
+        } 
         else
         {
             animator.SetTrigger("twitchLeftEar");
@@ -70,5 +72,37 @@ public class NavPlayerMovement : MonoBehaviour
             camera.transform.Translate(camera.transform.forward * -1 * 15.0f / ITERATIONS);
             yield return new WaitForSeconds(1 / ITERATIONS);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Hazard"))
+        {
+            StartCoroutine(LookAndLookAway(lookTarget.position, other.transform.position));
+        }
+    }
+    private IEnumerator LookAndLookAway(Vector3 targetPos, Vector3 hazardPos)
+    {
+        Vector3 targetDir = targetPos - transform.position;
+        Vector3 hazardDir = hazardPos - transform.position;
+
+        float angle = Vector2.SignedAngle(new Vector2(targetPos.x, targetPos.z), new Vector2(hazardPos.x, hazardPos.z));
+        
+        const int INTERVALS = 20;
+        const float INTERVAL = 0.5f / INTERVALS;
+
+        float angleInterval = angle / INTERVALS;
+
+        for (int i = 0; i < INTERVALS; i++)
+        {
+            lookTarget.RotateAround(transform.position, Vector3.up, -angleInterval);
+            yield return new WaitForSeconds(INTERVAL);
+        }
+        for (int i = 0; i < INTERVALS; i++)
+        {
+            lookTarget.RotateAround(transform.position, Vector3.up, angleInterval);
+            yield return new WaitForSeconds(INTERVAL);
+        }
+
     }
 }
