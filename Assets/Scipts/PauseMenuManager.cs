@@ -9,11 +9,13 @@ public class PauseMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         pausePanel.SetActive(false);
 
-        float value = PlayerPrefs.GetFloat(AudioManager.volumeLevelKey, AudioManager.defaultVolume);
-        pausePanel.GetComponentInChildren<Slider>().value = value;
-        DontDestroyOnLoad(gameObject);
+        float valu = PlayerPrefs.GetFloat(AudioManager.VOLUME_LEVEL_KEY, AudioManager.DEFAULT_VOLUME);
+        pausePanel.GetComponentInChildren<Slider>().value = valu;
+
     }
 
     // Update is called once per frame

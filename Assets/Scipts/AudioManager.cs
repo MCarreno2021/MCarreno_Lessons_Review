@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public const float defaultVolume = .5f;
-    public const string volumeLevelKey = "VolumeLevel";
+    public const float DEFAULT_VOLUME = .5f;
+    public const string VOLUME_LEVEL_KEY = "VolumeLevel";
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         
         audioSource = GetComponent<AudioSource>();
-        float volume = PlayerPrefs.GetFloat(volumeLevelKey, defaultVolume);
+        float volume = PlayerPrefs.GetFloat(VOLUME_LEVEL_KEY, DEFAULT_VOLUME);
         audioSource.volume = volume;
         DontDestroyOnLoad(gameObject);
     }
@@ -23,9 +23,9 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void AdjustVolume(float level)
+    public void AdjustVolume(float leve)
     {
-        audioSource.volume = level;
-        PlayerPrefs.SetFloat("VolumeLevel", level);
+        audioSource.volume = leve;
+        PlayerPrefs.SetFloat(VOLUME_LEVEL_KEY, leve);
     }
 }
